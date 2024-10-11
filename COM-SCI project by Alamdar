@@ -1,0 +1,204 @@
+import time
+import sys
+def print2(str):
+    for letter in str:
+        sys.stdout.write(letter)
+        sys.stdout.flush()
+        time.sleep(0.02)
+    print ()
+# defining a fuction as string 
+
+print2 ("Hello player, welcome to the game >*PERSUIT*<.")
+print2 ("This is a game based on exploration and discovery of hidden truths.")
+print ()
+print2 ("You have been mysteriosly teleported to an unkown world and have to get back to your family.")
+print ()
+print2 ("You need to search for for the person who put u in here and get back to the real world.")
+print ()
+print2 ("... Now are you ready for the journey?") 
+
+def start_game():
+    print ()
+    print(" >*WOOSH!. YOUVE NOW ENTERED!!")
+    
+    initial_choice = input("You are in the unkown world Gutalsivania. what do you want to do? (look around or Interact): ")
+
+    if initial_choice.lower() == "Interact": 
+        interact_path()
+    elif initial_choice.lower() == "look around": 
+        explore_path()
+    else:
+        print("Invalid choice! Please choose interact or look around.")
+
+def interact_path():
+    print("You interacted with a entity!")
+    entity_choice = input("Do you want to fight the entity or run away? (fight/run): ")
+
+    if entity_choice.lower() == "fight":
+        print("You are confused, afraid to fight, you look around quickly")
+        interact_path()
+    elif entity_choice.lower() == "run":   # 
+        print("You ran away safely .")
+        explore_path()
+    else:
+        print("Invalid choice! The entity is about to kill you!!")
+        interact_path()  
+
+def rock_path():# THE SACRIFICE + FIGHT FOR THE KEY ending
+    print("You desperately try to find something... OH you've found rocks!!")
+    attack_choice = input("What are you waiting for? (Throw/Physical attacks): ")
+
+    if attack_choice.lower() == "throw":
+        print("Entity fumbles")
+        rock_path()
+    elif attack_choice.lower() == "physical attacks":
+        print("You are severely damaged but still managed to pull through. Phew!")
+        explore_path()
+    else:
+        print("Invalid choice! you are about to be slaughtered...!!")
+        rock_path()     
+   
+  
+def medkit_path():
+    print("You've found a med kit, heal yourself quick!!") 
+    action_choice = input("That med kit must have helped right? What do u want to do now? (Analyize entity remains/Continue): ")
+
+    if action_choice.lower() == "Analyize entity remains":
+        print("Mysteriously you have found a key")
+        medkit_path()
+    elif action_choice.lower() == "Continue":
+        print("You went on soon to find another entity coming straight for U...")
+        explore_path()
+    else:
+        print("Invalid choice! Another entity smells ur blood...!!")
+        medkit_path()  
+
+def explore_path(): # THE CHASE FOR THE KEY + UNLUCKY WITHDRAW ending 
+    print("You thought you were safe from the entity to find out there's another one!")
+    thought_choice = input("What are you thinking? (Give up/Resist): ")
+
+    if thought_choice.lower() == "Give up":
+        print("OH NO YOU'VE DIED...")
+        interact_path()
+    elif thought_choice.lower() == "resist":
+        print("OUCH YOU WERE ATTACKED VIGOROUSLY ")
+        explore_path()
+    else:
+        print("Invalid choice! You still died... Or did you?")
+        interact_path()
+
+def dead_entity_path(): 
+    print("Congrats you lost the species following you. However, you find a dead entity with a key in its remains!")
+    key_choice = input("What are you thinking? (Take it/Ignore it): ")
+
+    if key_choice.lower() == "take it":
+        print("*>>WOOSH something seems to have unlocked...")
+        interact_path()
+    elif key_choice.lower() == "ignore it":
+        print("Seems like you've reached an end with no meaning, is this really it?")
+        explore_path()
+    else:
+        print("Invalid choice! You are now lost in the world of Gutalsivania?")
+        interact_path() 
+
+def town_path(): # THE WAKE UP CALL + THE DEATH CALL ending
+    print("You went ahead and found a small abandoned town.")
+    explore_town_choice = input("Do you want to explore the town or find a weapon? (explore/weapon finding): ")
+
+    if explore_town_choice.lower() == "explore": 
+        print("You found a trembling townsperson in a wrecked building who seems to be in pain.")
+        brother_path()
+    elif explore_town_choice.lower() == "weapon finding":
+        print("You are frightened after your encounter with the entity and still confused, you go back to find a weapon.")
+        town_path()
+    else:
+        print("Invalid choice! You have been stranded in the middle of the village not knowing where to go next.")
+        town_path()
+
+def brother_path(): #THE WAKE UP CALL ENDING ending
+    print("He tells you that he has a brother who is lost and you need to find him to leave this forsaken world")
+    pursue_choice = input("Should you choose to go on this pursuit? (Yes/No): ")
+
+    if pursue_choice.lower() == "yes":
+        print("Days later you find clues, hints, and finally you find the brother")
+        brother_path()
+    elif pursue_choice.lower() == "no":
+        print("Through all of your efforts, you deny the request and you rot in the world forever")
+        town_path()
+    else:
+        print("Invalid choice! The world of Gutalsivania has consumed you... will you wake up now?")
+        brother_path()
+
+
+def death_call_path(): 
+    print("Spooked by the wrecked houses you need a weapon to kill those damned creatures")
+    forest_choice = input("You chose to go to find materials in the forest nearby? (Into the forest/Enter the forest): ")
+
+    if forest_choice.lower() == "into the forest":
+        print("You make your way into the depths of the forest to make a wooden sword")
+        craft_path()
+    elif forest_choice.lower() == "enter the forest":
+        print("You make your way to the forest to find materials for your perfect sword")
+        death_call_path()
+    else:
+        print("Invalid choice! Inevitably you become depressed and entities ultimately find you..?")
+        craft_path()
+
+
+def craft_path(): 
+    print("You chose to explore deep into the forest to find the perfect weapon")
+    wood_choice = input("There are some wood materials on the ground? (Obtain/Leave it): ")
+
+    if wood_choice.lower() == "obtain":
+        print("You take the wood")
+        craft_path()
+    elif wood_choice.lower() == "leave it": 
+        print("You decide it's not worth it and want better materials")
+        death_call_path()
+    else:
+        print("Invalid choice! An entity creeps up on you.. shrieking with agony.")
+
+
+def Gained_Item_path():
+    print("You have wood mats!")
+    wood_choice = input("Do you want to craft them now? (Craft/later): ")
+
+    if wood_choice.lower() == "Craft":
+        print("Awesome! You have gained experience points")
+        skill_test_path()
+    elif wood_choice.lower() == "later":
+        print(" You go on ahead to find better mats.")
+        death_call_path()
+    else:
+        print("Invalid choice! You hear a rustling sound!!")
+
+
+
+def skill_test_path():
+    print("Among the forest comes around 5 big entities.")
+    skill_choice = input("Want to test your skills? (Combo attacks/ Block): ")
+
+    if skill_choice.lower() == "Combo attacks":
+        print("You gave a SWING! A SLASH! And a STRIKE!! .")
+        skill_test_path()
+    elif skill_choice.lower() == "Block":
+        print("Oh no.. theyre too big, youre sword breaks.")
+        death_call_path()
+        
+    else:
+        print("Invalid choice! Why must you not have courage. You got this .")
+          
+
+def final_key_path():
+    print("Nice. They dropped 2 different keys. And a house has spawned with one lock only")
+key_decision = input("Are you cooked? (Blue key/ Red key ): ")
+
+if key_decision.lower() == "Blue key":
+        print("YOU WERE SUCCESFUL... You have reached the end .")
+        final_key_path()
+elif key_decision.lower() == "red key":
+        print(" GGS you are stuck in your persuit to get out of the world.")
+        death_call_path()
+else:
+        print("This appears to be the end or is it just a dream, you'll never know! .")
+        
